@@ -5,9 +5,9 @@ import {
     Slider,
     Stack,
     SvgIcon,
-} from "@mui/material";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { IconExtend, IconMax, IconMini, IconRobot } from "assets";
+} from '@mui/material';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { IconExtend, IconMax, IconMini, IconRobot } from 'assets';
 // import { getMapImage } from 'apis/mapApi';
 
 const min = 1;
@@ -31,7 +31,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
         width: string;
         height: string;
         aspectRatio?: number;
-    }>({ width: "100%", height: "450px" });
+    }>({ width: '100%', height: '450px' });
     const [start, setStart] = useState<{ x: number; y: number }>({
         x: 0,
         y: 0,
@@ -63,7 +63,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
     };
 
     const handleMouseDown = (
-        e: React.MouseEvent<HTMLDivElement, MouseEvent>
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     ) => {
         setPanning(true);
         e.preventDefault();
@@ -77,7 +77,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
     };
 
     const handleMouseMove = (
-        e: React.MouseEvent<HTMLDivElement, MouseEvent>
+        e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     ) => {
         e.preventDefault();
         if (!panning) {
@@ -93,7 +93,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
         clientX: number,
         clientY: number,
         deltaY: number,
-        z?: number
+        z?: number,
     ) => {
         const delta = deltaY * -0.01;
         let nextZoom = z || zoom + delta;
@@ -131,7 +131,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                 (currentHeight || 1);
             updateMap(clientX, clientY, e.deltaY);
         },
-        [mapWrapper.current, mapWrapper2.current, pointX, pointY, zoom]
+        [mapWrapper.current, mapWrapper2.current, pointX, pointY, zoom],
     );
 
     const divRefCallback = useCallback(
@@ -142,29 +142,29 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                      * Since we are inside a `useCallback`, the `onWheel` callback being remove is still the old one here.
                      */
                     mapWrapper.current.removeEventListener(
-                        "wheel",
-                        handleWheel
+                        'wheel',
+                        handleWheel,
                     );
                 }
                 return;
             }
             mapWrapper.current = node;
-            node.addEventListener("wheel", handleWheel, { passive: false });
+            node.addEventListener('wheel', handleWheel, { passive: false });
         },
-        [handleWheel]
+        [handleWheel],
     );
 
     const handleExtend = () => {
         if (mapWrapper.current) {
             setPointX(
                 (mapWrapper.current.offsetWidth -
-                    Number(dimensions.width.replace("px", ""))) /
-                    2
+                    Number(dimensions.width.replace('px', ''))) /
+                    2,
             );
             setPointY(
                 (mapWrapper.current.offsetHeight -
-                    Number(dimensions.height.replace("px", ""))) /
-                    2
+                    Number(dimensions.height.replace('px', ''))) /
+                    2,
             );
         }
         setZoom(1);
@@ -178,17 +178,17 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
         <Box
             ref={divRefCallback}
             sx={{
-                position: "relative",
-                background: "#454545",
-                border: "1px solid #707070",
-                overflow: "hidden",
+                position: 'relative',
+                background: '#454545',
+                border: '1px solid #707070',
+                overflow: 'hidden',
                 width:
                     dimensions.aspectRatio &&
                     dimensions.aspectRatio <= 1 &&
-                    Number(dimensions.width.replace("px", "")) >
+                    Number(dimensions.width.replace('px', '')) >
                         (mapWrapper.current?.parentElement?.offsetWidth || 0)
                         ? dimensions.width
-                        : "100%",
+                        : '100%',
                 height:
                     dimensions.aspectRatio && dimensions.aspectRatio < 1
                         ? `calc(${dimensions.height} + 120px)`
@@ -198,10 +198,10 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
             <Box
                 ref={mapWrapper2}
                 sx={{
-                    transformOrigin: "0px 0px",
+                    transformOrigin: '0px 0px',
                     transform: `translate(${pointX}px, ${pointY}px) scale(${zoom})`,
-                    position: "relative",
-                    cursor: panning ? "grabbing" : "grab",
+                    position: 'relative',
+                    cursor: panning ? 'grabbing' : 'grab',
                 }}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
@@ -214,7 +214,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                             component={IconRobot}
                             inheritViewBox
                             sx={{
-                                position: "absolute",
+                                position: 'absolute',
                                 top: device?.value.current_pose.img_y || 0,
                                 left: device?.value.current_pose.img_x || 0,
                                 // heading的0是朝右, 90是朝上, transform的0是朝上, 90是朝右 用此方式轉換
@@ -234,7 +234,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                         src={mapImage}
                         alt="real-time map"
                         style={{
-                            display: "block",
+                            display: 'block',
                         }}
                         onLoad={onImgLoad}
                     />
@@ -244,29 +244,29 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                 spacing={2}
                 direction="row"
                 sx={{
-                    backgroundColor: "white",
-                    borderRadius: "24px",
-                    position: "absolute",
+                    backgroundColor: 'white',
+                    borderRadius: '24px',
+                    position: 'absolute',
                     bottom: 16,
                     left: 4,
-                    padding: "6.5px 20px",
+                    padding: '6.5px 20px',
                     opacity: 0.9,
                 }}
                 alignItems="baseline"
             >
-                <Box sx={{ color: "#454545", fontSize: "16px" }}>
+                <Box sx={{ color: '#454545', fontSize: '16px' }}>
                     {Math.round(
                         (CentimeterWidth / 100 / pixelCentimeterRate / zoom) *
-                            10
+                            10,
                     ) / 10}
                     m
                 </Box>
                 <Box
                     sx={{
                         width: `${CentimeterWidth}px`,
-                        height: "8px",
-                        border: "2px solid #454545",
-                        borderTop: "none",
+                        height: '8px',
+                        border: '2px solid #454545',
+                        borderTop: 'none',
                     }}
                 />
             </Stack>
@@ -274,13 +274,13 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                 spacing="10px"
                 direction="row"
                 sx={{
-                    backgroundColor: "white",
-                    position: "absolute",
+                    backgroundColor: 'white',
+                    position: 'absolute',
                     bottom: 16,
                     right: 4,
-                    width: "305px",
-                    borderRadius: "24px",
-                    padding: "3px 20px",
+                    width: '305px',
+                    borderRadius: '24px',
+                    padding: '3px 20px',
                     opacity: 0.9,
                 }}
                 alignItems="center"
@@ -294,7 +294,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                             (mapWrapper.current?.offsetHeight || 0) / 2;
                         updateMap(clientX, clientY, 1);
                     }}
-                    sx={{ padding: "5px" }}
+                    sx={{ padding: '5px' }}
                 >
                     <IconMini />
                 </IconButton>
@@ -310,7 +310,7 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                             (mapWrapper.current?.offsetWidth || 0) / 2;
                         const clientY =
                             (mapWrapper.current?.offsetHeight || 0) / 2;
-                        const v = typeof value === "number" ? value : value[0];
+                        const v = typeof value === 'number' ? value : value[0];
                         const deltaY = v > zoom ? -1 : 1;
                         updateMap(clientX, clientY, deltaY * 100, v);
                     }}
@@ -324,23 +324,23 @@ const App: React.FC<DeviceMapProps> = ({ device }) => {
                             (mapWrapper.current?.offsetHeight || 0) / 2;
                         updateMap(clientX, clientY, -1);
                     }}
-                    sx={{ padding: "5px" }}
+                    sx={{ padding: '5px' }}
                 >
                     <IconMax />
                 </IconButton>
                 <Box>{Math.round(zoom * 100)}%</Box>
-                <Box sx={{ height: "20px" }}>
+                <Box sx={{ height: '20px' }}>
                     <Divider
                         orientation="vertical"
                         sx={{
-                            borderColor: "#444444",
+                            borderColor: '#444444',
                         }}
                     />
                 </Box>
                 <IconButton
                     disabled={!mapImage}
                     onClick={handleExtend}
-                    sx={{ padding: "0px", width: "25px", height: "25px" }}
+                    sx={{ padding: '0px', width: '25px', height: '25px' }}
                 >
                     <IconExtend />
                 </IconButton>

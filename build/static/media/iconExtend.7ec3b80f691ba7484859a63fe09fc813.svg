@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="ic_extend" transform="translate(-1831 -1014)">
+    <rect id="Rectangle_5330" data-name="Rectangle 5330" width="30" height="30" transform="translate(1831 1014)" fill="#fff" opacity="0"/>
+    <g id="Group_11100" data-name="Group 11100" transform="translate(2887 -308) rotate(90)">
+      <g id="Group_10188" data-name="Group 10188">
+        <path id="Polygon_8" data-name="Polygon 8" d="M4.763.8A1,1,0,0,1,6.237.8l3.227,3.52A1,1,0,0,1,8.727,6H2.273a1,1,0,0,1-.737-1.676Z" transform="translate(1332 1028)" fill="#454545"/>
+        <path id="Polygon_9" data-name="Polygon 9" d="M4.763.8A1,1,0,0,1,6.237.8l3.227,3.52A1,1,0,0,1,8.727,6H2.273a1,1,0,0,1-.737-1.676Z" transform="translate(1343 1053) rotate(180)" fill="#454545"/>
+      </g>
+      <g id="Group_10189" data-name="Group 10189" transform="translate(2378 -297) rotate(90)">
+        <path id="Polygon_8-2" data-name="Polygon 8" d="M4.763.8A1,1,0,0,1,6.237.8l3.227,3.52A1,1,0,0,1,8.727,6H2.273a1,1,0,0,1-.737-1.676Z" transform="translate(1332 1028)" fill="#454545"/>
+        <path id="Polygon_9-2" data-name="Polygon 9" d="M4.763.8A1,1,0,0,1,6.237.8l3.227,3.52A1,1,0,0,1,8.727,6H2.273a1,1,0,0,1-.737-1.676Z" transform="translate(1343 1053) rotate(180)" fill="#454545"/>
+      </g>
+    </g>
+  </g>
+</svg>

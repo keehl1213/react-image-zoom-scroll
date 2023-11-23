@@ -9,11 +9,11 @@
 
 透過指令安裝
 
-### `$ npm install @keehl1213/react-image-zoom-scroll`
+`$ npm install @keehl1213/react-image-zoom-scroll`
 
 或設置package.json
 
-### `"@keehl1213/react-image-zoom-scroll": "0.2.0"`
+`"@keehl1213/react-image-zoom-scroll": "0.2.0"`
 
 ## 使用方法
 
